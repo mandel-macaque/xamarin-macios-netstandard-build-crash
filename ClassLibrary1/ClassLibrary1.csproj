@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <CallTarget Targets="Protobuf" />
+  </Target>
+
+  <Target Name="Protobuf" Inputs="Test.proto" Outputs="obj\Test.cs">
+    <Exec Command="$(NuGetPackageRoot)Google.Protobuf.Tools\3.5.1\tools\windows_x64\protoc --proto_path=. --csharp_out=obj Test.proto" Outputs="obj\Test.cs" />
+  </Target>
+
+  <ItemGroup>
+    <Compile Include="obj\Test.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.5.1" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.5.1" />
+  </ItemGroup>
+
+</Project>
