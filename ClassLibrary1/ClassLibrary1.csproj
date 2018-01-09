@@ -9,7 +9,7 @@
   </Target>
 
   <Target Name="Protobuf" Inputs="Test.proto" Outputs="obj\Test.cs">
-    <Exec Command="$(NuGetPackageRoot)Google.Protobuf.Tools\3.5.1\tools\windows_x64\protoc --proto_path=. --csharp_out=obj Test.proto" Outputs="obj\Test.cs" />
+    <Exec Command="$(NuGetPackageRoot)Google.Protobuf.Tools\3.5.1\tools\macosx_x64\protoc --proto_path=. --csharp_out=obj Test.proto" Outputs="obj\Test.cs" />
   </Target>
 
   <ItemGroup>
